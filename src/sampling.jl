@@ -127,31 +127,38 @@ using a rejection step.
 """
 function (s::RejectionSampler)(;max_amplitudes=nothing, kwargs...)
     num_samples = max_amplitudes === nothing ? s.num_samples : max_amplitudes
-    samples = Array{String, 1}(undef, num_samples)
     N = 2^s.num_qubits
+    M = s.M
 
+    samples = Samples()
     accepted = 0
     while accepted < num_samples
         # produce cadidate bitstrings
         bitstrings = random_bitstrings(s.rng, s.num_qubits, num_samples-accepted)
 
         # compute amplitudes for the bitstrings
-        amps = ctxmap(s.ctx, x -> compute_amplitude!(s.ctx, x; kwargs...), bitstrings)
-        amps = ctxgather(s.ctx, amps)
+        amps = [compute_amplitude!(s.ctx, bs; kwargs...) for bs in bitstrings]
+        # bs_amp_pairs = [bs => compute_amplitude!(s.ctx, bs; kwargs...) for bs in bitstrings if !(bs in keys(samples.amplitudes))]
 
-        # Perform a rejection step for each bitstring to correct the distribution of samples.
+        # Record the computed amplitudes and update M if required
         for (bs, amp) in zip(bitstrings, amps)
+            samples.amplitudes[bs] = amp
             Np = N * abs(amp)^2
-            s.fix_M && (s.M = max(Np, s.M))
+            s.fix_M || (M = max(Np, M))
+        end
+        s.fix_M || (M = ctxreduceall(s.ctx, max, M))
 
-            # Rejection step.
-            if rand(s.rng) < Np / s.M
+        # Conduct a rejection step for each bitstring to correct the distribution of samples.
+        for (bs, amp) in zip(bitstrings, amps)
+            Np = N * abs(amp)^2 # This is computed twice
+            if rand(s.rng) < Np / M
                 accepted += 1
-                samples[accepted] = bs
+                samples.bitstrings_counts[bs] += 1
             end
         end
     end
 
+    ctxgather(s.ctx, samples)
     samples
 end
 
@@ -205,50 +212,18 @@ function (s::UniformSampler)(;max_amplitudes=nothing, kwargs...)
     (bs, amps)
 end
 
-# ###############################################################################
-# # Sampler Constructor
-# ###############################################################################
+###############################################################################
+# Sampler Struct
+###############################################################################
 
-# """
-#     create_sampler(params)
+"""
+Struct to hold the results of a simulation.
+"""
+struct Samples{T}
+    bitstrings_counts::DefaultDict{String, <:Integer}
+    amplitudes::Dict{String, T}
+end
 
-# Returns a sampler whose type and parameters are specified in the Dict `params`.
-
-# Additional parameters that determine load balancing and totale amout of work to be done
-# are set by `max_amplitudes` and the Context `ctx`.
-# """
-# function create_sampler(params, ctx, max_amplitudes=nothing)
-#     max_amplitudes === nothing || (params[:params][:num_samples] = max_amplitudes)
-#     create_sampler(params, ctx)
-# end
-
-# function create_sampler(params, ctx::QXMPIContext)
-#     params[:rank] = MPI.Comm_rank(ctx.comm) ÷ MPI.Comm_size(ctx.sub_comm)
-#     params[:comm_size] = MPI.Comm_size(ctx.comm) ÷ MPI.Comm_size(ctx.sub_comm)
-#     create_sampler(params)
-# end
-
-
-# """
-# Struct to hold the results of a simulation.
-# """
-# struct Samples{T}
-#     bitstrings_counts::DefaultDict{String, <:Integer}
-#     amplitudes::Dict{String, T}
-# end
-
-# Samples() = Samples(DefaultDict{String, Int}(0), Dict{String, ComplexF32}())
-
-# """Function for reducing over amplitude contributions from each slice. For non-serial
-# contexts, contributions are summed over"""
-# reduce_slices(::QXContext, a) = a
-
-# """Function for reducing over calculated amplitudes and samples. For non-serial contexts,
-# contributions are gathered"""
-# reduce_results(::QXContext, results::Samples) = results
-
-# """Function for reducing over calculated amplitudes. For non-serial contexts, contributions
-# are gathered"""
-# BitstringIterator(::QXContext, bitstrings) = bitstrings
+Samples() = Samples(DefaultDict{String, Int}(0), Dict{String, ComplexF32}())
 
 end
