@@ -22,6 +22,10 @@ using QXContexts.Contexts
 """Abstract type for samplers"""
 abstract type AbstractSampler end
 
+"""Functions to generate random bitstrings"""
+random_bitstring(rng, num_qubits) = prod(rand(rng, ["0", "1"], num_qubits))
+random_bitstrings(rng, num_qubits, num_samples) = [random_bitstring(rng, num_qubits) for _ in 1:num_samples]
+
 ###############################################################################
 # ListSampler
 ###############################################################################
