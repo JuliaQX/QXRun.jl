@@ -1,0 +1,657 @@
+# version: 0.4.0
+# Determination of contraction plan:
+#   Method used: "flow cutter"
+#   Treewidth: 11
+#   Time allocated: 120
+#   Seed used: 42
+#   Returned metadata:
+#     1: "c min degree heuristic"
+#     2: "c status 15 1624278544674"
+#     3: "c min shortcut heuristic"
+#     4: "c status 12 1624278544676"
+#     5: "c run with 0.0/0.1/0.2 min balance and node_min_expansion in endless loop with varying seed"
+#   Hypergraph used: true
+#   Hyperedge contraction method: "Netcon where possible, min fill heuristic otherwise."
+# Slicing:
+#   Method used: "greedy treewidth deletion"
+#   Edges sliced: 4
+#   Score fucntion used: direct_treewidth
+#   Treewidths after slicing consecutive edges:
+#     - 10
+#     - 9
+#     - 8
+#     - 7
+# 
+load t7 data_2 2,2
+view t7_s t7 v1 1 2
+load t280 data_1 2
+ncon I16 1 t7_s 1,2 t280 2
+load t10 data_2 2,2
+view t10_s t10 v2 1 2
+load t283 data_1 2
+ncon I19 1 t10_s 1,2 t283 2
+ncon t505 1,2 I16 1 I19 2
+load t57 data_5 2
+view t57_s t57 v2 1 2
+ncon t506 1,2 t505 1,2 t57_s 2
+load t71 data_7 2,2
+view t71_s t71 v1 2 2
+view t71_s_s t71_s v4 1 2
+ncon t507 1,2,3 t506 1,2 t71_s_s 3,1
+load t95 data_5 2
+view t95_s t95 v4 1 2
+ncon t508 1,2,3 t507 1,2,3 t95_s 3
+load t47 data_5 2
+view t47_s t47 v1 1 2
+ncon t509 1,2,3 t508 1,2,3 t47_s 1
+load t1 data_2 2,2
+load t274 data_1 2
+ncon I171 1 t1 1,2 t274 2
+load t45 data_5 2
+load t2 data_2 2,2
+load t275 data_1 2
+ncon I15 1 t2 1,2 t275 2
+load t74 data_3 2,2
+load t75 data_4 2,2
+ncon I88 1,3 t74 1,2 t75 2,3
+load t92 data_7 2,2
+load t132 data_5 2
+load t179 data_7 2,2
+load t84 data_3 2,2
+load t85 data_4 2,2
+ncon I97 1,3 t84 1,2 t85 2,3
+load t108 data_7 2,2
+load t133 data_6 2,2
+ncon I98 2,3 t108 1,2 t133 3,1
+load t82 data_6 2,2
+load t100 data_3 2,2
+load t101 data_4 2,2
+ncon I105 1,3 t100 1,2 t101 2,3
+ncon t386 1,2,3 t82 1,2 I105 1,3
+ncon t387 2,3,4 I98 1,2 t386 1,3,4
+load t3 data_2 2,2
+load t276 data_1 2
+ncon I3 1 t3 1,2 t276 2
+load t27 data_3 2,2
+load t28 data_4 2,2
+view t28_s t28 v1 2 2
+ncon I73 1,3 t27 1,2 t28_s 2,3
+ncon t481 1,2 I3 1 I73 1,2
+load t221 data_5 2
+load t142 data_6 2,2
+load t123 data_7 2,2
+load t128 data_3 2,2
+view t128_s t128 v4 1 2
+load t129 data_4 2,2
+ncon I25 1,3 t128_s 1,2 t129 2,3
+ncon t384 1,2,3 t123 1,2 I25 3,1
+ncon t385 1,3,4 t142 1,2 t384 2,3,4
+load t153 data_3 2,2
+load t154 data_4 2,2
+ncon I53 1,3 t153 1,2 t154 2,3
+load t151 data_7 2,2
+load t110 data_7 2,2
+load t135 data_5 2
+ncon t330 1,2 t110 1,2 t135 1
+ncon t331 1,3 t151 1,2 t330 2,3
+ncon t470 1,2,3 I53 1,2 t331 1,3
+load t191 data_3 2,2
+load t192 data_4 2,2
+ncon I51 1,3 t191 1,2 t192 2,3
+load t90 data_3 2,2
+load t91 data_4 2,2
+view t91_s t91 v3 2 2
+ncon I103 1,3 t90 1,2 t91_s 2,3
+load t29 data_3 2,2
+view t29_s t29 v2 1 2
+load t30 data_4 2,2
+ncon I75 1,3 t29_s 1,2 t30 2,3
+load t14 data_2 2,2
+load t287 data_1 2
+ncon I7 1 t14 1,2 t287 2
+ncon t411 1,2 I75 1,2 I7 2
+load t40 data_5 2
+load t72 data_7 2,2
+load t15 data_2 2,2
+load t288 data_1 2
+ncon I9 1 t15 1,2 t288 2
+load t23 data_3 2,2
+load t24 data_4 2,2
+ncon I71 1,3 t23 1,2 t24 2,3
+ncon t354 1,2 I9 1 I71 2,1
+load t43 data_3 2,2
+load t44 data_4 2,2
+ncon I80 1,3 t43 1,2 t44 2,3
+load t73 data_6 2,2
+load t49 data_5 2
+ncon t355 1,2 t73 1,2 t49 2
+ncon t356 1,2,3 I80 1,2 t355 3,1
+ncon t357 2,3,4 t354 1,2 t356 1,3,4
+ncon t412 1,2,3,4 t72 1,2 t357 3,2,4
+ncon t413 1,2,3,4 t40 1 t412 2,1,3,4
+ncon t414 1,3,4,5 t411 1,2 t413 2,3,4,5
+load t11 data_2 2,2
+load t284 data_1 2
+ncon I4 1 t11 1,2 t284 2
+ncon t420 1,2,3,4 t414 1,2,3,4 I4 3
+load t37 data_5 2
+load t65 data_6 2,2
+load t83 data_7 2,2
+load t68 data_3 2,2
+load t69 data_4 2,2
+view t69_s t69 v1 2 2
+ncon I85 1,3 t68 1,2 t69_s 2,3
+ncon t382 1,2,3 t83 1,2 I85 2,3
+ncon t383 2,3,4 t65 1,2 t382 3,1,4
+load t53 data_3 2,2
+load t54 data_4 2,2
+view t54_s t54 v2 2 2
+ncon I32 1,3 t53 1,2 t54_s 2,3
+ncon t421 1,2,3,4 t383 1,2,3 I32 1,4
+ncon t422 1,2,3,4 t37 1 t421 1,2,3,4
+ncon t423 1,2,4,5,6 t420 1,2,3,4 t422 3,5,6,1
+load t106 data_3 2,2
+load t107 data_4 2,2
+ncon I99 1,3 t106 1,2 t107 2,3
+load t170 data_7 2,2
+load t152 data_6 2,2
+load t155 data_3 2,2
+load t156 data_4 2,2
+ncon I54 1,3 t155 1,2 t156 2,3
+ncon t366 1,2,3 t152 1,2 I54 1,3
+ncon t367 1,3,4 t170 1,2 t366 2,3,4
+load t134 data_7 2,2
+view t134_s t134 v4 2 2
+ncon t441 1,2,3,4 t367 1,2,3 t134_s 3,4
+load t182 data_7 2,2
+load t165 data_3 2,2
+load t166 data_4 2,2
+ncon I58 1,3 t165 1,2 t166 2,3
+load t158 data_5 2
+ncon t442 1,2 I58 1,2 t158 1
+ncon t443 1,2,3 t182 1,2 t442 2,3
+ncon t444 1,2,4,5,6 t441 1,2,3,4 t443 5,3,6
+load t230 data_5 2
+load t196 data_7 2,2
+ncon t362 1,2 t230 1 t196 1,2
+load t235 data_3 2,2
+load t236 data_4 2,2
+ncon I22 1,3 t235 1,2 t236 2,3
+output t297 8 2
+load t269 data_7 2,2
+output t296 7 2
+ncon I13 2 t269 1,2 t296 1
+load t245 data_6 2,2
+load t252 data_3 2,2
+load t253 data_4 2,2
+ncon I20 1,3 t252 1,2 t253 2,3
+ncon t326 1,2,3 t245 1,2 I20 1,3
+ncon t327 2,3 I13 1 t326 1,2,3
+ncon t363 1,2 t297 1 t327 2,1
+ncon t364 1,2,3 I22 1,2 t363 2,3
+ncon t365 2,3,4 t362 1,2 t364 3,1,4
+load t212 data_7 2,2
+load t232 data_6 2,2
+ncon I38 2,3 t212 1,2 t232 3,1
+ncon t392 1,2,3,4 t365 1,2,3 I38 4,2
+load t239 data_6 2,2
+load t242 data_3 2,2
+load t243 data_4 2,2
+ncon I86 1,3 t242 1,2 t243 2,3
+ncon t388 1,2,3 t239 1,2 I86 1,3
+load t257 data_5 2
+output t300 11 2
+load t264 data_3 2,2
+load t265 data_4 2,2
+ncon I56 1,3 t264 1,2 t265 2,3
+ncon t389 1,2 t300 1 I56 1,2
+ncon t390 1,2 t257 1 t389 1,2
+ncon t391 2,3,4 t388 1,2,3 t390 1,4
+output t301 12 2
+load t271 data_5 2
+ncon t393 1 t301 1 t271 1
+ncon t394 1,2,3 t391 1,2,3 t393 3
+ncon t395 1,3,4,5 t392 1,2,3,4 t394 5,3,2
+load t127 data_6 2,2
+load t185 data_7 2,2
+load t246 data_7 2,2
+load t213 data_7 2,2
+output t302 13 2
+load t260 data_3 2,2
+ncon t314 1,2 t302 1 t260 1,2
+ncon t315 2,3 t213 1,2 t314 1,3
+load t261 data_4 2,2
+ncon I65 1,3 t315 1,2 t261 2,3
+output t303 14 2
+load t272 data_5 2
+ncon t321 1 t303 1 t272 1
+ncon t322 1,2 I65 1,2 t321 2
+ncon t323 2,3 t246 1,2 t322 3,1
+load t214 data_6 2,2
+load t217 data_3 2,2
+load t218 data_4 2,2
+ncon I34 1,3 t217 1,2 t218 2,3
+ncon t341 1,2,3 t214 1,2 I34 3,1
+ncon t342 2,3,4 t323 1,2 t341 1,3,4
+load t203 data_3 2,2
+load t204 data_4 2,2
+ncon I44 1,3 t203 1,2 t204 2,3
+ncon t409 1,2,3,4 t342 1,2,3 I44 4,2
+ncon t410 2,3,4,5 t185 1,2 t409 3,1,4,5
+load t198 data_7 2,2
+load t193 data_3 2,2
+load t194 data_4 2,2
+ncon I50 1,3 t193 1,2 t194 2,3
+ncon t427 1,2,3 t198 1,2 I50 3,2
+load t99 data_6 2,2
+load t80 data_3 2,2
+load t81 data_4 2,2
+ncon I93 1,3 t80 1,2 t81 2,3
+ncon t358 1,2,3 t99 1,2 I93 3,2
+load t50 data_5 2
+load t16 data_2 2,2
+load t289 data_1 2
+ncon I10 1 t16 1,2 t289 2
+load t58 data_7 2,2
+view t58_s t58 v3 1 2
+load t38 data_5 2
+ncon t306 1,2 t58_s 1,2 t38 2
+load t12 data_2 2,2
+load t285 data_1 2
+ncon I5 1 t12 1,2 t285 2
+load t31 data_3 2,2
+ncon t307 1,2 I5 1 t31 1,2
+ncon t308 1,3 t306 1,2 t307 2,3
+load t32 data_4 2,2
+ncon I76 1,3 t308 1,2 t32 2,3
+ncon t359 1,2 I10 1 I76 2,1
+ncon t360 1,2 t50 1 t359 1,2
+ncon t361 1,3,4 t358 1,2,3 t360 2,4
+load t186 data_6 2,2
+load t223 data_6 2,2
+load t247 data_7 2,2
+ncon I30 2,3 t223 1,2 t247 3,1
+output t304 15 2
+load t254 data_3 2,2
+load t224 data_7 2,2
+load t273 data_6 2,2
+output t305 16 2
+ncon I1 2 t273 1,2 t305 1
+load t255 data_4 2,2
+ncon t309 1,2 I1 1 t255 2,1
+ncon t310 2,3 t224 1,2 t309 1,3
+ncon I64 1,3 t254 1,2 t310 3,2
+ncon t324 1,2 t304 1 I64 1,2
+ncon t325 1,3 I30 1,2 t324 2,3
+load t205 data_3 2,2
+load t206 data_4 2,2
+ncon I69 1,3 t205 1,2 t206 2,3
+ncon t352 1,2,3 t325 1,2 I69 3,2
+ncon t353 2,3,4 t186 1,2 t352 3,1,4
+load t137 data_7 2,2
+load t167 data_3 2,2
+load t168 data_4 2,2
+ncon I59 1,3 t167 1,2 t168 2,3
+ncon t404 1,2,3 t137 1,2 I59 3,1
+ncon t405 2,3,4,5 t353 1,2,3 t404 1,4,5
+load t97 data_6 2,2
+view t97_s t97 v3 2 2
+load t125 data_7 2,2
+load t145 data_6 2,2
+ncon I24 2,3 t125 1,2 t145 3,1
+load t118 data_3 2,2
+load t119 data_4 2,2
+ncon I91 1,3 t118 1,2 t119 2,3
+ncon t335 1,2,3 I24 1,2 I91 1,3
+ncon t336 2,3,4 t97_s 1,2 t335 1,3,4
+ncon t415 1,2,3,4,5 t405 1,2,3,4 t336 5,2,3
+ncon t416 2,3,4,5,6 t361 1,2,3 t415 4,5,1,6,3
+load t111 data_7 2,2
+load t136 data_6 2,2
+load t130 data_3 2,2
+load t131 data_4 2,2
+ncon I27 1,3 t130 1,2 t131 2,3
+ncon t339 1,2,3 t136 1,2 I27 2,3
+ncon t340 2,3,4 t111 1,2 t339 3,1,4
+load t160 data_5 2
+ncon t428 1,2,3 t340 1,2,3 t160 2
+ncon t429 1,2,3,4,5,6 t416 1,2,3,4,5 t428 1,5,6
+ncon t430 1,3,4,5,6,7 t427 1,2,3 t429 4,5,1,6,2,7
+ncon t432 1,2,4,5,6,7,8 t410 1,2,3,4 t430 3,5,6,7,8,1
+load t159 data_5 2
+load t173 data_3 2,2
+load t174 data_4 2,2
+ncon I62 1,3 t173 1,2 t174 2,3
+ncon t433 1,2 t159 1 I62 2,1
+ncon t434 1,2,3,4,5,6,7 t432 1,2,3,4,5,6,7 t433 1,2
+ncon t435 2,3,4,5,6,7,8 t127 1,2 t434 1,3,4,5,6,7,8
+ncon t445 1,2,3,4,5,6,7,8,9 t395 1,2,3,4 t435 5,6,7,4,8,9,3
+load t148 data_3 2,2
+load t149 data_4 2,2
+ncon I48 1,3 t148 1,2 t149 2,3
+load t184 data_5 2
+load t177 data_3 2,2
+load t178 data_4 2,2
+ncon I60 1,3 t177 1,2 t178 2,3
+ncon t446 1,2 t184 1 I60 2,1
+ncon t447 1,2,3 I48 1,2 t446 1,3
+ncon t448 1,2,4,5,6,7,8,9 t445 1,2,3,4,5,6,7,8,9 t447 3,1,4
+load t211 data_5 2
+load t227 data_3 2,2
+load t228 data_4 2,2
+ncon I74 1,3 t227 1,2 t228 2,3
+ncon t449 1,2 t211 1 I74 1,2
+ncon t450 1,2,3,4,5,6,7,8 t448 1,2,3,4,5,6,7,8 t449 3,6
+ncon t451 2,3,4,5,6,7,8,9,10 t444 1,2,3,4,5 t450 5,4,1,6,7,8,9,10
+ncon t462 1,2,3,4,5,6,7,8,9 I99 1,2 t451 1,3,4,5,6,7,8,2,9
+ncon t463 1,2,4,5,6,7,8,9,10,11 t423 1,2,3,4,5 t462 4,3,6,7,8,2,9,10,11
+ncon t464 1,2,3,4,5,6,7,8,9,10 I103 1,2 t463 3,4,1,5,6,7,8,9,10,2
+load t124 data_5 2
+load t144 data_7 2,2
+load t140 data_3 2,2
+load t141 data_4 2,2
+ncon I39 1,3 t140 1,2 t141 2,3
+ncon t424 1,2,3 t144 1,2 I39 3,2
+load t96 data_6 2,2
+view t96_s t96 v2 2 2
+load t116 data_3 2,2
+load t117 data_4 2,2
+ncon I92 1,3 t116 1,2 t117 2,3
+ncon t425 1,2,3 t96_s 1,2 I92 1,3
+ncon t426 1,3,4,5 t424 1,2,3 t425 2,4,5
+load t146 data_3 2,2
+load t147 data_4 2,2
+ncon I47 1,3 t146 1,2 t147 2,3
+ncon t459 1,2,3,4,5 t426 1,2,3,4 I47 1,5
+load t183 data_6 2,2
+load t163 data_3 2,2
+load t164 data_4 2,2
+ncon I57 1,3 t163 1,2 t164 2,3
+ncon t460 1,2,3 t183 1,2 I57 3,2
+ncon t461 2,3,4,5,6,7 t459 1,2,3,4,5 t460 6,1,7
+ncon t465 1,2,3,4,5,6 t124 1 t461 1,2,3,4,5,6
+ncon t466 2,3,4,5,6,7,8,9,10,11,12 t464 1,2,3,4,5,6,7,8,9,10 t465 1,3,4,11,10,12
+load t98 data_5 2
+load t86 data_3 2,2
+load t87 data_4 2,2
+ncon I101 1,3 t86 1,2 t87 2,3
+load t126 data_6 2,2
+load t104 data_3 2,2
+load t105 data_4 2,2
+ncon I100 1,3 t104 1,2 t105 2,3
+ncon t377 1,2,3 t126 1,2 I100 3,2
+ncon t378 1,2,3,4 I101 1,2 t377 3,1,4
+load t39 data_5 2
+load t48 data_5 2
+load t64 data_6 2,2
+ncon t332 1,2 t48 1 t64 2,1
+load t21 data_3 2,2
+load t22 data_4 2,2
+ncon I70 1,3 t21 1,2 t22 2,3
+load t9 data_2 2,2
+load t282 data_1 2
+ncon I18 1 t9 1,2 t282 2
+ncon t333 1,2 I70 1,2 I18 1
+ncon t334 2,3 t332 1,2 t333 1,3
+load t13 data_2 2,2
+load t286 data_1 2
+ncon I6 1 t13 1,2 t286 2
+ncon t379 1,2 t334 1,2 I6 2
+ncon t380 1,2 t39 1 t379 2,1
+ncon t381 2,3,4 t378 1,2,3,4 t380 1,4
+ncon t467 1,2,3 t98 1 t381 1,2,3
+ncon t468 1,2,4,5,6,7,8,9,10,11,12 t466 1,2,3,4,5,6,7,8,9,10,11 t467 3,8,12
+ncon t469 1,3,4,5,6,7,8,9,10,11 I51 1,2 t468 3,4,5,6,7,8,2,9,10,1,11
+load t244 data_6 2,2
+output t295 6 2
+load t258 data_3 2,2
+load t259 data_4 2,2
+ncon I67 1,3 t258 1,2 t259 2,3
+ncon t328 1,2 t295 1 I67 2,1
+ncon t329 2,3 t244 1,2 t328 1,3
+load t268 data_6 2,2
+output t294 5 2
+ncon I12 2 t268 1,2 t294 1
+ncon t417 1,2 t329 1,2 I12 2
+load t250 data_3 2,2
+load t251 data_4 2,2
+ncon I79 1,3 t250 1,2 t251 2,3
+output t298 9 2
+ncon t343 1,2 I79 1,2 t298 1
+load t240 data_3 2,2
+load t241 data_4 2,2
+ncon I108 1,3 t240 1,2 t241 2,3
+load t222 data_7 2,2
+load t238 data_6 2,2
+ncon I31 2,3 t222 1,2 t238 3,1
+ncon t344 1,2,3 I108 1,2 I31 3,1
+ncon t345 2,3,4 t343 1,2 t344 1,3,4
+load t270 data_6 2,2
+output t299 10 2
+ncon I2 2 t270 1,2 t299 1
+ncon t406 1,2,3 t345 1,2,3 I2 1
+load t233 data_3 2,2
+load t234 data_4 2,2
+ncon I23 1,3 t233 1,2 t234 2,3
+load t231 data_7 2,2
+ncon t407 1,2,3 I23 1,2 t231 1,3
+ncon t408 2,3,4,5 t406 1,2,3 t407 1,4,5
+load t181 data_7 2,2
+load t209 data_6 2,2
+load t237 data_7 2,2
+ncon I40 2,3 t209 1,2 t237 3,1
+load t199 data_3 2,2
+load t200 data_4 2,2
+ncon I46 1,3 t199 1,2 t200 2,3
+ncon t350 1,2,3 I40 1,2 I46 3,1
+ncon t351 2,3,4 t181 1,2 t350 1,3,4
+ncon t418 1,2,3,4,5,6 t408 1,2,3,4 t351 5,1,6
+ncon t419 1,3,4,5,6 t417 1,2 t418 2,3,1,4,5,6
+load t229 data_7 2,2
+load t210 data_6 2,2
+load t215 data_3 2,2
+load t216 data_4 2,2
+ncon I35 1,3 t215 1,2 t216 2,3
+ncon t337 1,2,3 t210 1,2 I35 3,1
+ncon t338 1,3,4 t229 1,2 t337 2,3,4
+ncon t431 2,3,4,5,6,7 t419 1,2,3,4,5 t338 1,6,7
+load t197 data_5 2
+ncon t471 1,2,3,4,5,6 t431 1,2,3,4,5,6 t197 1
+ncon t472 1,2,3,4,5,6,7,9,10,11,12 t469 1,2,3,4,5,6,7,8,9,10 t471 1,8,11,12,9,6
+ncon t473 2,3,4,5,6,7,8,9,10,11 t470 1,2,3 t472 1,4,5,6,7,8,9,10,3,2,11
+ncon t474 1,2,3,4,5,6,7,8,9,10,11 t385 1,2,3 t473 4,5,6,7,8,3,9,10,1,11
+load t187 data_3 2,2
+load t188 data_4 2,2
+ncon I66 1,3 t187 1,2 t188 2,3
+load t171 data_3 2,2
+load t172 data_4 2,2
+ncon I61 1,3 t171 1,2 t172 2,3
+load t157 data_5 2
+ncon t475 1,2 I61 1,2 t157 2
+ncon t476 1,2,3 I66 1,2 t475 3,2
+ncon t477 2,3,4,5,6,7,8,9,10,11,12 t474 1,2,3,4,5,6,7,8,9,10,11 t476 12,1,4
+load t143 data_5 2
+load t8 data_2 2,2
+load t281 data_1 2
+ncon I17 1 t8 1,2 t281 2
+load t109 data_6 2,2
+load t88 data_3 2,2
+load t89 data_4 2,2
+ncon I102 1,3 t88 1,2 t89 2,3
+load t121 data_6 2,2
+load t102 data_3 2,2
+load t103 data_4 2,2
+ncon I106 1,3 t102 1,2 t103 2,3
+ncon t368 1,2,3 t121 1,2 I106 2,3
+ncon t369 1,2,3,4 I102 1,2 t368 3,2,4
+load t34 data_5 2
+load t19 data_3 2,2
+load t20 data_4 2,2
+ncon I107 1,3 t19 1,2 t20 2,3
+load t4 data_2 2,2
+load t277 data_1 2
+ncon I8 1 t4 1,2 t277 2
+ncon t370 1,2 I107 1,2 I8 1
+ncon t371 1,2 t34 1 t370 1,2
+ncon t372 1,3,4 t369 1,2,3,4 t371 2,4
+ncon t436 1,2,3,4 t109 1,2 t372 3,4,2
+ncon t437 1,2,3,4 I17 1 t436 2,1,3,4
+load t78 data_3 2,2
+view t78_s t78 v4 1 2
+load t79 data_4 2,2
+ncon I90 1,3 t78_s 1,2 t79 2,3
+load t56 data_5 2
+load t61 data_3 2,2
+view t61_s t61 v3 1 2
+load t62 data_4 2,2
+ncon I83 1,3 t61_s 1,2 t62 2,3
+ncon t438 1,2 t56 1 I83 2,1
+ncon t439 1,2,3 I90 1,2 t438 2,3
+ncon t440 2,3,4,5,6 t437 1,2,3,4 t439 5,1,6
+load t189 data_3 2,2
+load t190 data_4 2,2
+ncon I52 1,3 t189 1,2 t190 2,3
+load t175 data_3 2,2
+load t176 data_4 2,2
+ncon I63 1,3 t175 1,2 t176 2,3
+load t120 data_6 2,2
+load t93 data_7 2,2
+load t114 data_3 2,2
+load t115 data_4 2,2
+view t115_s t115 v4 2 2
+ncon I109 1,3 t114 1,2 t115_s 2,3
+ncon t398 1,2,3 t93 1,2 I109 1,3
+ncon t399 1,3,4 t120 1,2 t398 2,3,4
+load t138 data_3 2,2
+load t139 data_4 2,2
+ncon I36 1,3 t138 1,2 t139 2,3
+ncon t452 1,2,3,4 t399 1,2,3 I36 1,4
+ncon t453 1,2,3,4,5 I63 1,2 t452 1,3,4,5
+load t180 data_5 2
+load t207 data_6 2,2
+load t225 data_3 2,2
+load t226 data_4 2,2
+ncon I28 1,3 t225 1,2 t226 2,3
+load t195 data_6 2,2
+load t220 data_7 2,2
+ncon I49 2,3 t195 1,2 t220 3,1
+ncon t346 1,2,3 I28 1,2 I49 3,2
+load t219 data_6 2,2
+load t248 data_3 2,2
+output t290 1 2
+load t266 data_5 2
+ncon t311 1 t290 1 t266 1
+ncon t312 1,2 t248 1,2 t311 1
+ncon t313 2,3 t219 1,2 t312 1,3
+load t249 data_4 2,2
+ncon I78 1,3 t313 1,2 t249 2,3
+output t291 2 2
+load t256 data_5 2
+ncon t347 1 t291 1 t256 1
+ncon t348 1,2 I78 1,2 t347 2
+ncon t349 1,3,4 t346 1,2,3 t348 4,2
+ncon t400 1,2,3,4 t207 1,2 t349 1,3,4
+load t262 data_3 2,2
+load t208 data_7 2,2
+output t293 4 2
+load t263 data_4 2,2
+ncon t316 1,2 t293 1 t263 2,1
+ncon t317 2,3 t208 1,2 t316 1,3
+ncon I42 1,3 t262 1,2 t317 3,2
+load t267 data_5 2
+output t292 3 2
+ncon t401 1 t267 1 t292 1
+ncon t402 1,2 I42 1,2 t401 1
+ncon t403 2,3,4,5 t400 1,2,3,4 t402 1,5
+load t201 data_3 2,2
+load t202 data_4 2,2
+ncon I45 1,3 t201 1,2 t202 2,3
+ncon t454 1,2,3,4,5 t403 1,2,3,4 I45 1,5
+ncon t455 1,2,3,4,5 t180 1 t454 1,2,3,4,5
+ncon t456 2,3,4,5,6,7 t453 1,2,3,4,5 t455 1,5,6,2,7
+ncon t457 1,2,3,4,5,6,7 I52 1,2 t456 1,3,4,5,6,7
+ncon t458 1,2,4,5,6,7,8 t440 1,2,3,4,5 t457 3,1,2,4,6,7,8
+ncon t478 1,2,3,4,5,6,7 t143 1 t458 1,2,3,4,5,6,7
+ncon t479 1,2,3,4,6,7,8,10,11,12 t477 1,2,3,4,5,6,7,8,9,10,11 t478 9,12,2,5,11,10,8
+ncon t480 2,3,4,5,6,7,8,9,10 t221 1 t479 2,3,4,5,6,7,1,8,9,10
+load t51 data_3 2,2
+load t52 data_4 2,2
+ncon I21 1,3 t51 1,2 t52 2,3
+load t33 data_5 2
+ncon t482 1,2 I21 1,2 t33 1
+ncon t483 1,2,3,4,5,6,7,8,9,10 t480 1,2,3,4,5,6,7,8,9 t482 9,10
+ncon t484 2,3,4,5,6,7,8,9,10 t481 1,2 t483 3,4,5,6,7,2,8,9,1,10
+ncon t485 1,2,3,4,5,6,7,8,9 t387 1,2,3 t484 4,3,5,6,7,8,9,1,2
+ncon t486 1,2,3,4,5,6,7,8,9,10 I97 1,2 t485 3,4,2,5,6,7,8,9,10
+load t17 data_3 2,2
+load t18 data_4 2,2
+ncon I68 1,3 t17 1,2 t18 2,3
+load t6 data_2 2,2
+load t279 data_1 2
+ncon I14 1 t6 1,2 t279 2
+ncon t373 1,2 I68 1,2 I14 2
+load t36 data_5 2
+load t55 data_6 2,2
+load t41 data_3 2,2
+view t41_s t41 v1 1 2
+load t42 data_4 2,2
+ncon I77 1,3 t41_s 1,2 t42 2,3
+ncon t374 1,2,3 t55 1,2 I77 3,2
+ncon t375 1,2,3 t36 1 t374 2,1,3
+ncon t376 1,3,4 t373 1,2 t375 2,3,4
+load t70 data_5 2
+load t59 data_3 2,2
+view t59_s t59 v2 1 2
+load t60 data_4 2,2
+ncon I82 1,3 t59_s 1,2 t60 2,3
+ncon t487 1,2 t70 1 I82 2,1
+ncon t488 1,2,3,4 t376 1,2,3 t487 2,4
+ncon t489 1,3,4,5,6,7,8,9,10 t486 1,2,3,4,5,6,7,8,9,10 t488 4,2,5,9
+load t66 data_3 2,2
+load t67 data_4 2,2
+ncon I84 1,3 t66 1,2 t67 2,3
+load t76 data_3 2,2
+load t77 data_4 2,2
+view t77_s t77 v2 2 2
+ncon I89 1,3 t76 1,2 t77_s 2,3
+ncon t490 1,2,3 I84 1,2 I89 1,3
+ncon t491 1,2,3,4,5,6,8,9 t489 1,2,3,4,5,6,7,8,9 t490 7,1,8
+load t94 data_6 2,2
+load t122 data_7 2,2
+load t112 data_3 2,2
+load t113 data_4 2,2
+ncon I94 1,3 t112 1,2 t113 2,3
+ncon t396 1,2,3 t122 1,2 I94 3,2
+ncon t397 2,3,4 t94 1,2 t396 3,1,4
+load t150 data_5 2
+ncon t492 1,2,3 t397 1,2,3 t150 2
+ncon t493 1,2,3,4,5,7,8,9 t491 1,2,3,4,5,6,7,8 t492 1,6,9
+load t169 data_5 2
+load t161 data_3 2,2
+load t162 data_4 2,2
+ncon I55 1,3 t161 1,2 t162 2,3
+ncon t494 1,2 t169 1 I55 2,1
+ncon t495 1,3,4,5,6,7,8 t493 1,2,3,4,5,6,7,8 t494 2,8
+ncon t496 2,3,4,5,6,7 t179 1,2 t495 3,4,5,6,7,1,2
+ncon t497 1,2,3,4,5,6 t132 1 t496 1,2,3,4,5,6
+ncon t498 2,3,4,5,6,7 t92 1,2 t497 1,3,4,5,6,7
+load t46 data_5 2
+ncon t499 1,2,3,4,5,6 t498 1,2,3,4,5,6 t46 3
+ncon t500 1,2,3,4,5,6 I88 1,2 t499 1,3,2,4,5,6
+ncon t501 2,3,4,5,6 I15 1 t500 2,1,3,4,5,6
+load t25 data_3 2,2
+load t63 data_7 2,2
+load t35 data_5 2
+ncon t318 1,2 t63 1,2 t35 2
+load t5 data_2 2,2
+load t278 data_1 2
+ncon I11 1 t5 1,2 t278 2
+load t26 data_4 2,2
+ncon t319 1,2 I11 1 t26 2,1
+ncon t320 1,3 t318 1,2 t319 2,3
+ncon I169 1,3 t25 1,2 t320 3,2
+ncon t502 1,3,4,5 t501 1,2,3,4,5 I169 1,2
+ncon t503 1,2,3,4 t45 1 t502 1,2,3,4
+ncon t504 2,3,4 I171 1 t503 1,2,3,4
+ncon t510 0 t509 1,2,3 t504 1,3,2
+save output t510
